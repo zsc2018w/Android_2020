@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.fire.common.net.exception.ExceptionHandle
 import com.fire.common.net.exception.ReponseException
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 import java.lang.Exception
 
@@ -27,9 +29,19 @@ open class BaseViewModel : AndroidViewModel(BaseApplication.application), Lifecy
 
 
     /**
+     * 流的方式请求
+     */
+    fun <T> launchFlow(block:suspend ()->T):Flow<T>{
+       return flow {
+         emit(block())
+       }
+    }
+
+
+    /**
      * 简单处理请求回调结果
      */
-    fun <T> lauchOnResult(
+    protected fun <T> launchOnResult(
         block: suspend CoroutineScope.() -> T,
         onSuccess:  (T) -> Unit,
         onError: CoroutineScope.(ReponseException) -> Unit={},

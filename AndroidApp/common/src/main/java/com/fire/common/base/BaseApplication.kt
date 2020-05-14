@@ -9,7 +9,7 @@ import android.content.Context
  * Author: 周昇辰
  * Date: 2020/3/6
  **/
-class BaseApplication : Application() {
+open class BaseApplication : Application() {
     companion object{
         lateinit var application: Application
     }
