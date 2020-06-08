@@ -29,6 +29,10 @@ class My : BaseViewModel() {
             }
         )
 
+         com.fire.god.HttpUtils.get1().request({
+             Log.d("xxx0","------------$it")
+         }, { _, _ ->
+         })
     }
 
 
