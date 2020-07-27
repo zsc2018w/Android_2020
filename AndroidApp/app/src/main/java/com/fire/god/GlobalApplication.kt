@@ -17,5 +17,7 @@ class GlobalApplication :BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         globalContext=this
+
+
     }
 }

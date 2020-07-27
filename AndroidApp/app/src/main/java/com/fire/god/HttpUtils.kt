@@ -38,7 +38,7 @@ class HttpUtils private constructor() {
     fun request(callBack:(result:String)->Unit,callback2:(result:String,result2:String)->Unit){
 
         Log.d("xxx0","_0当前线程----"+Thread.currentThread().name)
-        GlobalScope.launch {
+        val ts=GlobalScope.launch {
             Log.d("xxx0","_1当前线程----"+Thread.currentThread().name)
             withContext(Dispatchers.IO){
 
@@ -50,6 +50,11 @@ class HttpUtils private constructor() {
                 }
             }
         }
+
+
+        ts.cancel()
+
+
     }
 
 
